@@ -10,6 +10,7 @@ import Foundation
 struct DatabaseHelper {
     
 /*
+ 🔴 DatabaseHelper - это файл в котором обычно:(сетевой запрос,Firebase, локальная БД,mock-данные)
  
 🟢 func getProducts() async throws -> [Product]
    🔹 Создаем асинхронная функцию(может выбрасывать ошибку throws, если данные не полученны). Возврашает массив прродуктов [Product] из модели Product
@@ -33,7 +34,7 @@ struct DatabaseHelper {
 🟢 let products = try JSONDecoder().decode(ProductArray.self, from: data)
    ⚠️ преобразуем JSON в Swift-объект , ProductArray.self — это модель, которая соответствует структуре JSON.
    🔹 try JSONDecoder().decode(ProductArray.self, from: data) - Пытаемся декодировать данные из модели ProductArray
-   🔹 let products = - Если данные полученны и декодированны, загружаем их в константу  let products
+   🔹 let products = - Если данные полученны и декодированны, загружаем их в константу  (let) products
  
  🟢 return products.products
    🔹 Первый products (белого цвета) - Это локальная константа, То есть: products  // ← объект типа ProductArray

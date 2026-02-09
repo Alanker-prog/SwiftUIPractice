@@ -8,8 +8,6 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-
-
 /*
  ✴️ Настраиваем рандомное изображение через пакет SDWebImageSwiftUI(сторонняя библиотека для загрузки изображений из интернета), без ручного URLSession
  

@@ -110,3 +110,4 @@ struct SpotifyNewReleaseCell: View {
             .padding()
     }
 }
+
