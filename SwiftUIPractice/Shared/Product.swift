@@ -26,6 +26,10 @@ struct Product: Codable , Identifiable{
         images.first ?? Constans.randomImage
     }
     
+    let recentlyAdded: Bool = {
+        return Int.random(in: 1...4) == 1
+    }()
+    
     /*
     ✴️ Это мокет данных на struct Product
        ➡️ Обычно mock создают если еще не готов бекэнд, это позволяет верстать UI заранее и дожидаться сервер
