@@ -4,7 +4,6 @@
 //
 //  Created by Алан Парастаев on 18.03.2026.
 //
-
 import SwiftUI
 import SwiftfulRouting
 
@@ -14,9 +13,7 @@ struct NetflixMovieDetailsView: View {
     
     var product: Product = .mock
     
-    @State private var progress: Double = 0.2
-    @State private var isMyList: Bool = false
-    @State private var products: [Product] = []
+    @StateObject private var viewModel = NetflixMovieDetailsViewModel()
     
     var body: some View {
         ZStack {
@@ -26,13 +23,12 @@ struct NetflixMovieDetailsView: View {
             VStack(spacing: 0) {
                 NetflixDetailsHeaderView(
                     imageName: product.firstImage,
-                    progress: progress
+                    progress: viewModel.progress
                 ) {
                     
                 } onXMarkTap: {
                     router.dismissScreen()
                 }
-
                 
                 ScrollView(.vertical) {
                     VStack(alignment: .leading, spacing: 16) {
@@ -46,25 +42,12 @@ struct NetflixMovieDetailsView: View {
             }
         }
         .task {
-            await getData()
+            await viewModel.getData()
         }
         .toolbarVisibility(.hidden, for: .navigationBar)
     }
     
-    private func getData() async {
-        guard products.isEmpty else { return }
-        do {
-             products = try await DatabaseHelper().getProducts()
-        } catch {
-            print("Error:", error)
-        }
-    }
-    
-    private func onProductPressed(product: Product) {
-        router.showScreen(.sheet) { _ in
-            NetflixMovieDetailsView(product: product)
-        }
-    }
+    // MARK: - Sections
     
     private var detailsProductSection: some View {
         NetflixDitailsProductView(
@@ -75,21 +58,22 @@ struct NetflixMovieDetailsView: View {
             hasClosedCaptions: true,
             isTopTen: 7,
             descriptionText: product.description,
-            castText: "Cast: Alan, unknown film Netflix") {
-                
-            } onDownloadTap: {
-                
-            }
+            castText: "Cast: Alan, unknown film Netflix"
+        ) {
+            
+        } onDownloadTap: {
+            
+        }
     }
     
     private var buttonSection: some View {
         HStack(spacing: 32) {
-            MyListButton(isMyList: isMyList) {
-                isMyList.toggle()
+            MyListButton(isMyList: viewModel.isMyList) {
+                viewModel.toggleMyList()
             }
             
             RateButton { selection in
-                // do something with selection
+                // handle selection
             }
             
             ShereButton()
@@ -102,8 +86,12 @@ struct NetflixMovieDetailsView: View {
             Text("More Like This")
                 .font(.headline)
             
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 3), alignment: .center, spacing: 8, pinnedViews: []) {
-                ForEach(products) { product in
+            LazyVGrid(
+                columns: Array(repeating: GridItem(.flexible(), spacing: 8), count: 3),
+                alignment: .center,
+                spacing: 8
+            ) {
+                ForEach(viewModel.products) { product in
                     NetflixMovieCell(
                         imageName: product.firstImage,
                         title: product.title,
@@ -115,11 +103,20 @@ struct NetflixMovieDetailsView: View {
                     }
                 }
             }
-            
         }
         .foregroundStyle(.netflixWhite)
     }
+    
+    // MARK: - Actions
+    
+    private func onProductPressed(product: Product) {
+        router.showScreen(.sheet) { _ in
+            NetflixMovieDetailsView(product: product)
+        }
+    }
 }
+
+// MARK: - Preview
 
 #Preview {
     RouterView { _ in
