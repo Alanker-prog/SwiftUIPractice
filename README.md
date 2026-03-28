@@ -1,31 +1,29 @@
 ✴️ SwiftUI Practice — Netflix · Bumble · Spotify
-   A multi-app iOS project built to practice real-world SwiftUI architecture, networking, and component design.
+   🔹 A multi-app iOS project built to practice real-world SwiftUI architecture, networking, and component design.
 
 🟢 Apps Included:
 
-|          App         | Description 
--------------------------------------
-| 🎬 **Netflix Clone** | Browse products with hero cell, category rows, filter bar, and detail screen 
-| 💬 **Bumble Clone**  | Swipe-based card UI with user profiles and match interaction 
-| 🎵 **Spotify Clone** | Music browsing UI with playlists, artists, and now-playing screen 
+  🎬 Netflix Clone - Browse products with hero cell, category rows, filter bar, and detail screen 
+  💬 Bumble Clone - Swipe-based card UI with user profiles and match interaction 
+  🎵 Spotify Clone - Music browsing UI with playlists, artists, and now-playing screen 
 
 All three apps share a common **NetworkService**, **data models**, and **architecture**.
 
 🟢 Screenshots
 
-### 🎬 Netflix
+ 🎬 Netflix
 <p float="left">
 <img width="200" src="https://github.com/user-attachments/assets/923c809b-2ac8-4fd7-bf7d-6d9b7dccc561" />
 <img width="200" src="https://github.com/user-attachments/assets/4b3267dc-7000-4539-8869-926918bc8223" />
 </p>
 
-### 🎵 Spotify
+ 🎵 Spotify
 <p float="left">
 <img width="200" src="https://github.com/user-attachments/assets/70829040-c033-400e-8056-221a8f0e7557" />
 <img width="200" src="https://github.com/user-attachments/assets/88c745ce-ba02-496f-bede-ff9dd705fd04" />
 </p>
 
-### 💬 Bumble
+ 💬 Bumble
 <p float="left">
 <img width="200" src="https://github.com/user-attachments/assets/233be6c4-fead-4342-bf38-2a01f9dfccfa" />
 <img width="200" src="https://github.com/user-attachments/assets/affeb666-1f18-4ab4-842c-2c4220afac8c" />
@@ -34,17 +32,15 @@ All three apps share a common **NetworkService**, **data models**, and **archite
 
 🟢 Tech Stack
 
-| Category        |  Tools   |
-------------------------------
-| Language        | Swift 5.9+                
-| UI Framework    | SwiftUI 
-| Architecture    | MVVM 
-| Concurrency     | async/await, Task, MainActor 
-| Networking      | URLSession, REST API 
-| Image Loading   | SDWebImageSwiftUI 
-| Navigation      | SwiftfulRouting 
-| Dependency Mgmt | Swift Package Manager (SPM) 
-| Version Control | Git / GitHub 
+◉ Language - Swift 5.9+                
+◉ UI Framework - SwiftUI 
+◉ Architecture - MVVM 
+◉ Concurrency - async/await, Task, MainActor 
+◉ Networking - URLSession, REST API 
+◉ Image Loading - SDWebImageSwiftUI 
+◉ Navigation - SwiftfulRouting 
+◉ Dependency Mgmt - Swift Package Manager (SPM) 
+◉ Version Control - Git / GitHub 
 
 
  🟢 Architecture
